@@ -1,0 +1,21 @@
+---
+  - hosts: 127.0.0.1
+    connection: local
+    become: yes
+    vars_files:
+      - environment.yml
+    tasks:
+      - name: delete Test Segment
+        nsxt_policy_segment:
+          hostname: "{{hostname}}"
+          nsx_cert_path: "{{nsx_cert_path}}"
+          #nsx_key_path: {{nsx_key_path}}
+          validate_certs: False
+          display_name: "Ansible-Test-01"
+          state: absent
+          transport_zone_display_name: "{{transport_zone_display_name}}"
+          replication_mode: "SOURCE"
+          admin_state: UP
+          tier1_display_name: "{{tier1_display_name}}"
+          subnets:
+            - gateway_address: "172.16.100.1/24"

@@ -1,0 +1,7 @@
+---
+    hostname: "lab-nsxt-01-mgr-01.virtuallyknowhere.lab"
+    nsx_cert_path: "/home/frank/certs/nsx_ansible_certificate.p12"
+    transport_zone_display_name: "global-overlay-tz"
+    tier1_display_name: "ansible-t1"
+    tier0_display_name: "Core-T0-01"
+    tt_tier1_display_name: "Ansible-3-Tier-T1"

@@ -1,0 +1,27 @@
+---
+  - hosts: 127.0.0.1
+    connection: local
+    become: yes
+    vars_files:
+      - environment.yml
+    tasks:
+      - name: create Tier1
+        nsxt_policy_tier1:
+          hostname: "{{hostname}}"
+          nsx_cert_path: "{{nsx_cert_path}}"
+          validate_certs: False
+          display_name: "{{tier1_display_name}}"
+          state: present
+          failover_mode: "PREEMPTIVE"
+          disable_firewall: True
+          force_whitelisting: True
+          enable_standby_relocation: False
+          tags:
+            - scope: "created-by"
+              tag: "ansible"
+          route_advertisement_types:
+              - "TIER1_STATIC_ROUTES"
+              - "TIER1_CONNECTED"
+              - "TIER1_NAT"
+          tier0_display_name: "{{tier0_display_name}}"
+

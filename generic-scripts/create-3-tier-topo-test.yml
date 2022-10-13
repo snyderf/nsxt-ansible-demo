@@ -1,0 +1,84 @@
+---
+  - hosts: 127.0.0.1
+    connection: local
+    become: yes
+    vars_files:
+      - environment.yml
+    tasks:
+      - name: create Tier1 Router
+        nsxt_policy_tier1:
+          hostname: "{{hostname}}"
+          nsx_cert_path: "{{nsx_cert_path}}"
+          validate_certs: False
+          display_name: "{{tt_tier1_display_name}}"
+          state: present
+          failover_mode: "PREEMPTIVE"
+          disable_firewall: True
+          force_whitelisting: True
+          enable_standby_relocation: False
+          tags:
+            - scope: "created-by"
+              tag: "ansible"
+          route_advertisement_types:
+              - "TIER1_STATIC_ROUTES"
+              - "TIER1_CONNECTED"
+              - "TIER1_NAT"
+          tier0_display_name: "{{tier0_display_name}}"
+      - name: create Web LS
+        nsxt_policy_segment:
+          hostname: "{{hostname}}"
+          nsx_cert_path: "{{nsx_cert_path}}"
+          #nsx_key_path: {{nsx_key_path}}
+          validate_certs: False
+          display_name: "Ansible-Web-LS"
+          state: present
+          transport_zone_display_name: "{{transport_zone_display_name}}"
+          replication_mode: "SOURCE"
+          admin_state: UP
+          tier1_display_name: "{{tt_tier1_display_name}}"
+          tags:
+          - scope: "created-by"
+            tag: "ansible"
+          - scope: "Tier"
+            tag: "Web"
+          subnets:
+            - gateway_address: "10.88.1.1/24"
+      - name: create App LS
+        nsxt_policy_segment:
+          hostname: "{{hostname}}"
+          nsx_cert_path: "{{nsx_cert_path}}"
+          #nsx_key_path: {{nsx_key_path}}
+          validate_certs: False
+          display_name: "Ansible-App-LS"
+          state: present
+          transport_zone_display_name: "{{transport_zone_display_name}}"
+          replication_mode: "SOURCE"
+          admin_state: UP
+          tier1_display_name: "{{tt_tier1_display_name}}"
+          tags:
+          - scope: "created-by"
+            tag: "ansible"
+          - scope: "Tier"
+            tag: "App"
+          subnets:
+            - gateway_address: "10.88.2.1/24"
+      - name: create DB LS
+        nsxt_policy_segment:
+          hostname: "{{hostname}}"
+          nsx_cert_path: "{{nsx_cert_path}}"
+          #nsx_key_path: {{nsx_key_path}}
+          validate_certs: False
+          display_name: "Ansible-DB-LS"
+          state: present
+          transport_zone_display_name: "{{transport_zone_display_name}}"
+          replication_mode: "SOURCE"
+          admin_state: UP
+          tier1_display_name: "{{tt_tier1_display_name}}"
+          tags:
+          - scope: "created-by"
+            tag: "ansible"
+          - scope: "Tier"
+            tag: "DB"
+          subnets:
+            - gateway_address: "10.88.3.1/24"
+      
