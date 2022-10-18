@@ -1,0 +1,21 @@
+---
+  - hosts: 127.0.0.1
+    connection: local
+    become: yes
+    vars_files:
+      - environment.yml
+    tasks:
+      - name: create Tier1
+        vmware.ansible_for_nsxt.nsxt_vm_tags:
+          hostname: "{{hostname}}"
+          nsx_cert_path: "{{nsx_cert_path}}"
+          nsx_key_path: "{{nsx_key_path}}"
+          validate_certs: False
+          nsx_ca_path: "{{nsx_ca_path}}"
+          virtual_machine_display_name: App-VM-1
+          remove_other_tags: False
+          add_tags:
+            - scope: "App-Name"
+              tag: "Corp-App"
+            - scope: "App-Tier"
+              tag: "Web"

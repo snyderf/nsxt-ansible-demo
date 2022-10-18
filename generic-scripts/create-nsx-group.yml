@@ -1,0 +1,23 @@
+---
+  - hosts: 127.0.0.1
+    connection: local
+    become: yes
+    vars_files:
+      - environment.yml
+    tasks:
+      - name: create Tier1
+        vmware.ansible_for_nsxt.nsxt_vm_tags:
+          hostname: "{{hostname}}"
+          nsx_cert_path: "{{nsx_cert_path}}"
+          nsx_key_path: "{{nsx_key_path}}"
+          validate_certs: False
+          nsx_ca_path: "{{nsx_ca_path}}"
+          display_name: test-policy-group
+          state: "present"
+          domain_id: "default"
+          expression:
+            - member_type: "VirtualMachine"
+              value: "webvm"
+              key: "Tag"
+              operator: "EQUALS"
+              resource_type: "Condition"
