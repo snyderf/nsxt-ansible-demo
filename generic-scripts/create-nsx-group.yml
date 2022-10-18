@@ -17,7 +17,7 @@
           domain_id: "default"
           expression:
             - member_type: "VirtualMachine"
-              value: "webvm"
+              value: "App-Tier|Web"
               key: "Tag"
               operator: "EQUALS"
               resource_type: "Condition"
