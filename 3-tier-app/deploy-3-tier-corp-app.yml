@@ -17,7 +17,7 @@
         networks:
           'vxw-dvs-301-virtualwire-7-sid-5006-Web_Tier_Logical_Switch': 'Overlay-Web-160'
         power_on: yes
-        ovf: ~/3-tier-ovas/web-01a_corp.local.ovf
+        ovf: '{{ ova_path }}3-tier-ovas/web-01a_corp.local.ovf'
         validate_certs: no
       delegate_to: localhost
     - name: deploy corp-web-02
@@ -32,7 +32,7 @@
         networks:
           'vxw-dvs-301-virtualwire-7-sid-5006-Web_Tier_Logical_Switch': 'Overlay-Web-160'
         power_on: yes
-        ovf: ~/3-tier-ovas/web-02a_corp.local.ovf
+        ovf: '{{ ova_path }}3-tier-ovas/web-02a_corp.local.ovf'
         validate_certs: no
       delegate_to: localhost
     - name: deploy corp-web-03
@@ -47,7 +47,7 @@
         networks:
           'vxw-dvs-301-virtualwire-7-sid-5006-Web_Tier_Logical_Switch': 'Overlay-Web-160'
         power_on: yes
-        ovf: ~/3-tier-ovas/web-03a_corp.local.ovf
+        ovf: '{{ ova_path }}3-tier-ovas/web-03a_corp.local.ovf'
         validate_certs: no
       delegate_to: localhost
     - name: deploy corp-web-04
@@ -62,7 +62,7 @@
         networks:
           'vxw-dvs-301-virtualwire-7-sid-5006-Web_Tier_Logical_Switch': 'Overlay-Web-160'
         power_on: yes
-        ovf: ~/3-tier-ovas/web-04a_corp.local.ovf
+        ovf: '{{ ova_path }}3-tier-ovas/web-04a_corp.local.ovf'
         validate_certs: no
       delegate_to: localhost
     - name: deploy corp-app-01
@@ -77,7 +77,7 @@
         networks:
           'vxw-dvs-301-virtualwire-1-sid-5000-App_Tier_Logical_Switch': 'Overlay-App-144'
         power_on: yes
-        ovf: ~/3-tier-ovas/app-01a_corp.local.ovf
+        ovf: '{{ ova_path }}3-tier-ovas/app-01a_corp.local.ovf'
         validate_certs: no
       delegate_to: localhost
     - name: deploy corp-db-01
@@ -92,6 +92,6 @@
         networks:
           'vxw-dvs-301-virtualwire-5-sid-5004-DB_Tier_Logical_Switch': 'Overlay-DB-128'
         power_on: yes
-        ovf: ~/3-tier-ovas/db-01a_corp.local.ovf
+        ovf: '{{ ova_path }}3-tier-ovas/db-01a_corp.local.ovf'
         validate_certs: no
       delegate_to: localhost
