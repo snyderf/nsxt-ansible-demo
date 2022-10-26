@@ -1,52 +1,52 @@
---
-  - hosts: 127.0.0.1
-    connection: local
-    become: yes
-    vars_files:
-      - environment.yml
-    tasks:
-      - name: deploy hr-web-01
-        community.vmware.vmware_deploy_ovf:
-          hostname: '{{ vc_hostname }}'
-          username: '{{ vc_username }}'
-          password: '{{ vc_password }}'
-          datacenter: '{{ vc_datacenter }}'
-          cluster: '{{vc_cluster }}'
-          datastore: '{{vc_datastore }}'
-          name: hr-web-01
-          networks:
-            'vxw-dvs-301-virtualwire-4-sid-5003-Collapsed_Logical_Switch': 'Overlay-Web-160'
-          power_on: yes
-          ovf: ~/3-tier-ovas/hr-web-01a_corp.local.ovf
-          validate_certs: no
-        delegate_to: localhost
-      - name: deploy hr-app-01
-        community.vmware.vmware_deploy_ovf:
-          hostname: '{{ vc_hostname }}'
-          username: '{{ vc_username }}'
-          password: '{{ vc_password }}'
-          datacenter: '{{ vc_datacenter }}'
-          cluster: '{{vc_cluster }}'
-          datastore: '{{vc_datastore }}'
-          name: hr-app-01
-          networks:
-            'vxw-dvs-301-virtualwire-4-sid-5003-Collapsed_Logical_Switch': 'Overlay-App-144'
-          power_on: yes
-          ovf: ~/3-tier-ovas/hr-app-01a_corp.local.ovf
-          validate_certs: no
-        delegate_to: localhost
-      - name: deploy corp-db-01
-        community.vmware.vmware_deploy_ovf:
-          hostname: '{{ vc_hostname }}'
-          username: '{{ vc_username }}'
-          password: '{{ vc_password }}'
-          datacenter: '{{ vc_datacenter }}'
-          cluster: '{{vc_cluster }}'
-          datastore: '{{vc_datastore }}'
-          name: hr-db-01
-          networks:
-            'vxw-dvs-301-virtualwire-4-sid-5003-Collapsed_Logical_Switch': 'Overlay-DB-128'
-          power_on: yes
-          ovf: ~/3-tier-ovas/hr-db-01a_corp.local.ovf
-          validate_certs: no
-        delegate_to: localhost
+---
+- hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars_files:
+    - environment.yml
+  tasks:
+    - name: deploy hr-web-01
+      community.vmware.vmware_deploy_ovf:
+        hostname: '{{ vc_hostname }}'
+        username: '{{ vc_username }}'
+        password: '{{ vc_password }}'
+        datacenter: '{{ vc_datacenter }}'
+        cluster: '{{vc_cluster }}'
+        datastore: '{{vc_datastore }}'
+        name: hr-web-01
+        networks:
+          'vxw-dvs-301-virtualwire-4-sid-5003-Collapsed_Logical_Switch': 'Overlay-Web-160'
+        power_on: yes
+        ovf: ~/3-tier-ovas/hr-web-01a_corp.local.ovf
+        validate_certs: no
+      delegate_to: localhost
+    - name: deploy hr-app-01
+      community.vmware.vmware_deploy_ovf:
+        hostname: '{{ vc_hostname }}'
+        username: '{{ vc_username }}'
+        password: '{{ vc_password }}'
+        datacenter: '{{ vc_datacenter }}'
+        cluster: '{{vc_cluster }}'
+        datastore: '{{vc_datastore }}'
+        name: hr-app-01
+        networks:
+          'vxw-dvs-301-virtualwire-4-sid-5003-Collapsed_Logical_Switch': 'Overlay-App-144'
+        power_on: yes
+        ovf: ~/3-tier-ovas/hr-app-01a_corp.local.ovf
+        validate_certs: no
+      delegate_to: localhost
+    - name: deploy corp-db-01
+      community.vmware.vmware_deploy_ovf:
+        hostname: '{{ vc_hostname }}'
+        username: '{{ vc_username }}'
+        password: '{{ vc_password }}'
+        datacenter: '{{ vc_datacenter }}'
+        cluster: '{{vc_cluster }}'
+        datastore: '{{vc_datastore }}'
+        name: hr-db-01
+        networks:
+          'vxw-dvs-301-virtualwire-4-sid-5003-Collapsed_Logical_Switch': 'Overlay-DB-128'
+        power_on: yes
+        ovf: ~/3-tier-ovas/hr-db-01a_corp.local.ovf
+        validate_certs: no
+      delegate_to: localhost

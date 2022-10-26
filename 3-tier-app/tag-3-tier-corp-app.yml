@@ -1,103 +1,103 @@
 ---
-  - hosts: 127.0.0.1
-    connection: local
-    become: yes
-    vars_files:
-      - environment.yml
-    tasks:
-      - name: tag corp-web-01
-        vmware.ansible_for_nsxt.nsxt_vm_tags:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          virtual_machine_display_name: corp-web-01
-          remove_other_tags: False
-          add_tags:
-            - scope: "App-Name"
-              tag: "Corp-App"
-            - scope: "App-Tier"
-              tag: "Web"
-            - scope: "Environment"
-              tag: "Prod"
-            - scope: "OS-Type"
-              tag: "Linux"
-      - name: tag corp-web-02
-        vmware.ansible_for_nsxt.nsxt_vm_tags:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          virtual_machine_display_name: corp-web-02
-          remove_other_tags: False
-          add_tags:
-            - scope: "App-Name"
-              tag: "Corp-App"
-            - scope: "App-Tier"
-              tag: "Web"
-            - scope: "Environment"
-              tag: "Prod"
-            - scope: "OS-Type"
-              tag: "Linux"
-      - name: tag corp-web-03
-        vmware.ansible_for_nsxt.nsxt_vm_tags:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          virtual_machine_display_name: corp-web-03
-          remove_other_tags: False
-          add_tags:
-            - scope: "App-Name"
-              tag: "Corp-App"
-            - scope: "App-Tier"
-              tag: "Web"
-            - scope: "Environment"
-              tag: "Prod"
-            - scope: "OS-Type"
-              tag: "Linux"
-      - name: tag corp-web-04
-        vmware.ansible_for_nsxt.nsxt_vm_tags:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          virtual_machine_display_name: corp-web-04
-          remove_other_tags: False
-          add_tags:
-            - scope: "App-Name"
-              tag: "Corp-App"
-            - scope: "App-Tier"
-              tag: "Web"
-            - scope: "Environment"
-              tag: "Prod"
-            - scope: "OS-Type"
-              tag: "Linux"
-      - name: tag corp-app-01
-        vmware.ansible_for_nsxt.nsxt_vm_tags:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          virtual_machine_display_name: corp-app-01
-          remove_other_tags: False
-          add_tags:
-            - scope: "App-Name"
-              tag: "Corp-App"
-            - scope: "App-Tier"
-              tag: "App"
-            - scope: "Environment"
-              tag: "Prod"
-            - scope: "OS-Type"
-              tag: "Linux"
-      - name: tag corp-db-01
-        vmware.ansible_for_nsxt.nsxt_vm_tags:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          virtual_machine_display_name: corp-db-01
-          remove_other_tags: False
-          add_tags:
-            - scope: "App-Name"
-              tag: "Corp-App"
-            - scope: "App-Tier"
-              tag: "DB"
-            - scope: "Environment"
-              tag: "Prod"
-            - scope: "OS-Type"
-              tag: "Linux"
+- hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars_files:
+    - environment.yml
+  tasks:
+    - name: tag corp-web-01
+      vmware.ansible_for_nsxt.nsxt_vm_tags:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        virtual_machine_display_name: corp-web-01
+        remove_other_tags: False
+        add_tags:
+          - scope: "App-Name"
+            tag: "Corp-App"
+          - scope: "App-Tier"
+            tag: "Web"
+          - scope: "Environment"
+            tag: "Prod"
+          - scope: "OS-Type"
+            tag: "Linux"
+    - name: tag corp-web-02
+      vmware.ansible_for_nsxt.nsxt_vm_tags:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        virtual_machine_display_name: corp-web-02
+        remove_other_tags: False
+        add_tags:
+          - scope: "App-Name"
+            tag: "Corp-App"
+          - scope: "App-Tier"
+            tag: "Web"
+          - scope: "Environment"
+            tag: "Prod"
+          - scope: "OS-Type"
+            tag: "Linux"
+    - name: tag corp-web-03
+      vmware.ansible_for_nsxt.nsxt_vm_tags:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        virtual_machine_display_name: corp-web-03
+        remove_other_tags: False
+        add_tags:
+          - scope: "App-Name"
+            tag: "Corp-App"
+          - scope: "App-Tier"
+            tag: "Web"
+          - scope: "Environment"
+            tag: "Prod"
+          - scope: "OS-Type"
+            tag: "Linux"
+    - name: tag corp-web-04
+      vmware.ansible_for_nsxt.nsxt_vm_tags:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        virtual_machine_display_name: corp-web-04
+        remove_other_tags: False
+        add_tags:
+          - scope: "App-Name"
+            tag: "Corp-App"
+          - scope: "App-Tier"
+            tag: "Web"
+          - scope: "Environment"
+            tag: "Prod"
+          - scope: "OS-Type"
+            tag: "Linux"
+    - name: tag corp-app-01
+      vmware.ansible_for_nsxt.nsxt_vm_tags:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        virtual_machine_display_name: corp-app-01
+        remove_other_tags: False
+        add_tags:
+          - scope: "App-Name"
+            tag: "Corp-App"
+          - scope: "App-Tier"
+            tag: "App"
+          - scope: "Environment"
+            tag: "Prod"
+          - scope: "OS-Type"
+            tag: "Linux"
+    - name: tag corp-db-01
+      vmware.ansible_for_nsxt.nsxt_vm_tags:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        virtual_machine_display_name: corp-db-01
+        remove_other_tags: False
+        add_tags:
+          - scope: "App-Name"
+            tag: "Corp-App"
+          - scope: "App-Tier"
+            tag: "DB"
+          - scope: "Environment"
+            tag: "Prod"
+          - scope: "OS-Type"
+            tag: "Linux"

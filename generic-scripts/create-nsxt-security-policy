@@ -1,23 +1,23 @@
 ---
-  - hosts: 127.0.0.1
-    connection: local
-    become: yes
-    vars_files:
-      - environment.yml
-    tasks:
-      - name: create Tier1
-        vmware.ansible_for_nsxt.nsxt_policy_security_policy:
-          hostname: "{{hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          display_name: "Infrastructure"
-          state: "present"
-          domain_id: "default"
-          locked: True
-          rules:
-            - action "ALLOW"
-              description: "Web Tier Access"
-              sequence_number: 10
-              display_name: "Web Tier Access"
-              source
+- hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars_files:
+    - environment.yml
+  tasks:
+    - name: create Tier1
+      vmware.ansible_for_nsxt.nsxt_policy_security_policy:
+        hostname: "{{hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: "Infrastructure"
+        state: "present"
+        domain_id: "default"
+        locked: True
+        rules:
+          - action "ALLOW"
+            description: "Web Tier Access"
+            sequence_number: 10
+            display_name: "Web Tier Access"
+            source
 

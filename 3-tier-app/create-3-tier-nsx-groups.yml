@@ -1,119 +1,119 @@
 ---
-  - hosts: 127.0.0.1
-    connection: local
-    become: yes
-    vars_files:
-      - environment.yml
-    tasks:
-      - name: create Web Tier VM Group
-        vmware.ansible_for_nsxt.nsxt_policy_group:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          display_name: Web-Tier-VMs
-          state: "present"
-          domain_id: "default"
-          expression:
-            - member_type: "VirtualMachine"
-              value: "App-Tier|Web"
-              key: "Tag"
-              operator: "EQUALS"
-              resource_type: "Condition"
-      - name: create App Tier VM Group
-        vmware.ansible_for_nsxt.nsxt_policy_group:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          display_name: App-Tier-VMs
-          state: "present"
-          domain_id: "default"
-          expression:
-            - member_type: "VirtualMachine"
-              value: "App-Tier|App"
-              key: "Tag"
-              operator: "EQUALS"
-              resource_type: "Condition"
-      - name: create DB Tier VM Group
-        vmware.ansible_for_nsxt.nsxt_policy_group:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          display_name: DB-Tier-VMs
-          state: "present"
-          domain_id: "default"
-          expression:
-            - member_type: "VirtualMachine"
-              value: "App-Tier|DB"
-              key: "Tag"
-              operator: "EQUALS"
-              resource_type: "Condition"
-      - name: create Corp App Group
-        vmware.ansible_for_nsxt.nsxt_policy_group:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          display_name: DB-Tier-VMs
-          state: "present"
-          domain_id: "default"
-          expression:
-            - member_type: "VirtualMachine"
-              value: "App-Name|Corp-App"
-              key: "Tag"
-              operator: "EQUALS"
-              resource_type: "Condition"
-      - name: create Fin App Group
-        vmware.ansible_for_nsxt.nsxt_policy_group:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          display_name: DB-Tier-VMs
-          state: "present"
-          domain_id: "default"
-          expression:
-            - member_type: "VirtualMachine"
-              value: "App-Name|Fin-App"
-              key: "Tag"
-              operator: "EQUALS"
-              resource_type: "Condition"
-      - name: create HR App Group
-        vmware.ansible_for_nsxt.nsxt_policy_group:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          display_name: DB-Tier-VMs
-          state: "present"
-          domain_id: "default"
-          expression:
-            - member_type: "VirtualMachine"
-              value: "App-Name|HR-App"
-              key: "Tag"
-              operator: "EQUALS"
-              resource_type: "Condition"
-      - name: create Linux VM Group
-        vmware.ansible_for_nsxt.nsxt_policy_group:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          display_name: DB-Tier-VMs
-          state: "present"
-          domain_id: "default"
-          expression:
-            - member_type: "VirtualMachine"
-              value: "OS-Type|Linux"
-              key: "Tag"
-              operator: "EQUALS"
-              resource_type: "Condition"
-      - name: create Production Group
-        vmware.ansible_for_nsxt.nsxt_policy_group:
-          hostname: "{{nsxt_hostname}}"
-          nsx_cert_path: "{{nsx_cert_path}}"
-          validate_certs: False
-          display_name: DB-Tier-VMs
-          state: "present"
-          domain_id: "default"
-          expression:
-            - member_type: "VirtualMachine"
-              value: "Environment|Prod"
-              key: "Tag"
-              operator: "EQUALS"
-              resource_type: "Condition"
+- hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars_files:
+    - environment.yml
+  tasks:
+    - name: create Web Tier VM Group
+      vmware.ansible_for_nsxt.nsxt_policy_group:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: Web-Tier-VMs
+        state: "present"
+        domain_id: "default"
+        expression:
+          - member_type: "VirtualMachine"
+            value: "App-Tier|Web"
+            key: "Tag"
+            operator: "EQUALS"
+            resource_type: "Condition"
+    - name: create App Tier VM Group
+      vmware.ansible_for_nsxt.nsxt_policy_group:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: App-Tier-VMs
+        state: "present"
+        domain_id: "default"
+        expression:
+          - member_type: "VirtualMachine"
+            value: "App-Tier|App"
+            key: "Tag"
+            operator: "EQUALS"
+            resource_type: "Condition"
+    - name: create DB Tier VM Group
+      vmware.ansible_for_nsxt.nsxt_policy_group:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: DB-Tier-VMs
+        state: "present"
+        domain_id: "default"
+        expression:
+          - member_type: "VirtualMachine"
+            value: "App-Tier|DB"
+            key: "Tag"
+            operator: "EQUALS"
+            resource_type: "Condition"
+    - name: create Corp App Group
+      vmware.ansible_for_nsxt.nsxt_policy_group:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: DB-Tier-VMs
+        state: "present"
+        domain_id: "default"
+        expression:
+          - member_type: "VirtualMachine"
+            value: "App-Name|Corp-App"
+            key: "Tag"
+            operator: "EQUALS"
+            resource_type: "Condition"
+    - name: create Fin App Group
+      vmware.ansible_for_nsxt.nsxt_policy_group:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: DB-Tier-VMs
+        state: "present"
+        domain_id: "default"
+        expression:
+          - member_type: "VirtualMachine"
+            value: "App-Name|Fin-App"
+            key: "Tag"
+            operator: "EQUALS"
+            resource_type: "Condition"
+    - name: create HR App Group
+      vmware.ansible_for_nsxt.nsxt_policy_group:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: DB-Tier-VMs
+        state: "present"
+        domain_id: "default"
+        expression:
+          - member_type: "VirtualMachine"
+            value: "App-Name|HR-App"
+            key: "Tag"
+            operator: "EQUALS"
+            resource_type: "Condition"
+    - name: create Linux VM Group
+      vmware.ansible_for_nsxt.nsxt_policy_group:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: DB-Tier-VMs
+        state: "present"
+        domain_id: "default"
+        expression:
+          - member_type: "VirtualMachine"
+            value: "OS-Type|Linux"
+            key: "Tag"
+            operator: "EQUALS"
+            resource_type: "Condition"
+    - name: create Production Group
+      vmware.ansible_for_nsxt.nsxt_policy_group:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: DB-Tier-VMs
+        state: "present"
+        domain_id: "default"
+        expression:
+          - member_type: "VirtualMachine"
+            value: "Environment|Prod"
+            key: "Tag"
+            operator: "EQUALS"
+            resource_type: "Condition"
