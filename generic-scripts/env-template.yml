@@ -1,8 +1,21 @@
 ---
     #copy this file to a file called environment.yml and update the fields as needed for your deployment.
-    nsxt-hostname: "<NSX-T MGR HOSTNAME>"
+    
+    #vCenter related variables.
+    vc_hostname: "<VC HOSTNAME>"
+    vc_username: "<VC USERNAME"
+    vc_password: "<VC PASSWORD"
+    vc_vds_name: "<VDS Name>"
+    vc_datacenter: "<VC Data Center>"
+    vc_cluster: "<VC CLUSTER"
+    vc_datastore: "<VC Datasore"
+
+    #NSX-T Related Variables
+    nsxt_hostname: "<NSX-T MGR HOSTNAME>"
     nsx_cert_path: "<CERT LOCATION>"
-    transport_zone_display_name: "global-overlay-tz"
-    tier1_display_name: "ansible-t1"
-    tier0_display_name: "Core-T0-01"
-    tt_tier1_display_name: "Ansible-3-Tier-T1"
+    transport_zone_display_name: "<Specific Transport Zone>"
+    tier1_display_name: "<Tier1 RTR Name>"
+    tier0_display_name: "<Tier0 RTR Name>"
+    #tt_tier1_display_name: "Ansible-3-Tier-T1"
+
+    #NSX-ALB Related Variables
