@@ -1,0 +1,3 @@
+#remove environment.yml from syncing to git.
+**/environment.yml
+environment.yml
