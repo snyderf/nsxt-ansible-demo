@@ -9,9 +9,7 @@
         vmware.ansible_for_nsxt.nsxt_vm_tags:
           hostname: "{{nsxt_hostname}}"
           nsx_cert_path: "{{nsx_cert_path}}"
-          nsx_key_path: "{{nsx_key_path}}"
           validate_certs: False
-          nsx_ca_path: "{{nsx_ca_path}}"
           virtual_machine_display_name: corp-web-01
           remove_other_tags: False
           add_tags:
@@ -27,9 +25,7 @@
         vmware.ansible_for_nsxt.nsxt_vm_tags:
           hostname: "{{nsxt_hostname}}"
           nsx_cert_path: "{{nsx_cert_path}}"
-          nsx_key_path: "{{nsx_key_path}}"
           validate_certs: False
-          nsx_ca_path: "{{nsx_ca_path}}"
           virtual_machine_display_name: corp-web-02
           remove_other_tags: False
           add_tags:
@@ -45,9 +41,7 @@
         vmware.ansible_for_nsxt.nsxt_vm_tags:
           hostname: "{{nsxt_hostname}}"
           nsx_cert_path: "{{nsx_cert_path}}"
-          nsx_key_path: "{{nsx_key_path}}"
           validate_certs: False
-          nsx_ca_path: "{{nsx_ca_path}}"
           virtual_machine_display_name: corp-web-03
           remove_other_tags: False
           add_tags:
@@ -63,9 +57,7 @@
         vmware.ansible_for_nsxt.nsxt_vm_tags:
           hostname: "{{nsxt_hostname}}"
           nsx_cert_path: "{{nsx_cert_path}}"
-          nsx_key_path: "{{nsx_key_path}}"
           validate_certs: False
-          nsx_ca_path: "{{nsx_ca_path}}"
           virtual_machine_display_name: corp-web-04
           remove_other_tags: False
           add_tags:
@@ -81,9 +73,7 @@
         vmware.ansible_for_nsxt.nsxt_vm_tags:
           hostname: "{{nsxt_hostname}}"
           nsx_cert_path: "{{nsx_cert_path}}"
-          nsx_key_path: "{{nsx_key_path}}"
           validate_certs: False
-          nsx_ca_path: "{{nsx_ca_path}}"
           virtual_machine_display_name: corp-app-01
           remove_other_tags: False
           add_tags:
@@ -99,9 +89,7 @@
         vmware.ansible_for_nsxt.nsxt_vm_tags:
           hostname: "{{nsxt_hostname}}"
           nsx_cert_path: "{{nsx_cert_path}}"
-          nsx_key_path: "{{nsx_key_path}}"
           validate_certs: False
-          nsx_ca_path: "{{nsx_ca_path}}"
           virtual_machine_display_name: corp-db-01
           remove_other_tags: False
           add_tags:

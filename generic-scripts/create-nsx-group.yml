@@ -6,12 +6,10 @@
       - environment.yml
     tasks:
       - name: create Tier1
-        vmware.ansible_for_nsxt.nsxt_vm_tags:
+        vmware.ansible_for_nsxt.nsxt_policy_group:
           hostname: "{{hostname}}"
           nsx_cert_path: "{{nsx_cert_path}}"
-          nsx_key_path: "{{nsx_key_path}}"
           validate_certs: False
-          nsx_ca_path: "{{nsx_ca_path}}"
           display_name: test-policy-group
           state: "present"
           domain_id: "default"
