@@ -17,7 +17,7 @@
         networks:
           'vxw-dvs-301-virtualwire-4-sid-5003-Collapsed_Logical_Switch': 'Overlay-Web-160'
         power_on: yes
-        ovf: ~/3-tier-ovas/fin-web-01a_corp.local.ovf
+        ovf: '{{ ova_path }}3-tier-ovas/fin-web-01a_corp.local.ovf'
         validate_certs: no
       delegate_to: localhost
     - name: deploy fin-app-01
@@ -32,7 +32,7 @@
         networks:
           'vxw-dvs-301-virtualwire-4-sid-5003-Collapsed_Logical_Switch': 'Overlay-App-144'
         power_on: yes
-        ovf: ~/3-tier-ovas/fin-app-01a_corp.local.ovf
+        ovf: '{{ ova_path }}3-tier-ovas/fin-app-01a_corp.local.ovf'
         validate_certs: no
       delegate_to: localhost
     - name: deploy corp-db-01
@@ -47,6 +47,6 @@
         networks:
           'vxw-dvs-301-virtualwire-4-sid-5003-Collapsed_Logical_Switch': 'Overlay-DB-128'
         power_on: yes
-        ovf: ~/3-tier-ovas/fin-db-01a_corp.local.ovf
+        ovf: '{{ ova_path }}3-tier-ovas/fin-db-01a_corp.local.ovf'
         validate_certs: no
       delegate_to: localhost
