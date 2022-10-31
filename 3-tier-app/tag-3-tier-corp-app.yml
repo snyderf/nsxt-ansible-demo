@@ -18,7 +18,7 @@
           - scope: "App-Tier"
             tag: "Web"
           - scope: "Environment"
-            tag: "Prod"
+            tag: "Demo"
           - scope: "OS-Type"
             tag: "Linux"
     - name: tag corp-web-02
@@ -34,7 +34,7 @@
           - scope: "App-Tier"
             tag: "Web"
           - scope: "Environment"
-            tag: "Prod"
+            tag: "Demo"
           - scope: "OS-Type"
             tag: "Linux"
     - name: tag corp-web-03
@@ -50,7 +50,7 @@
           - scope: "App-Tier"
             tag: "Web"
           - scope: "Environment"
-            tag: "Prod"
+            tag: "Demo"
           - scope: "OS-Type"
             tag: "Linux"
     - name: tag corp-web-04
@@ -66,7 +66,7 @@
           - scope: "App-Tier"
             tag: "Web"
           - scope: "Environment"
-            tag: "Prod"
+            tag: "Demo"
           - scope: "OS-Type"
             tag: "Linux"
     - name: tag corp-app-01
@@ -82,7 +82,7 @@
           - scope: "App-Tier"
             tag: "App"
           - scope: "Environment"
-            tag: "Prod"
+            tag: "Demo"
           - scope: "OS-Type"
             tag: "Linux"
     - name: tag corp-db-01
@@ -98,6 +98,6 @@
           - scope: "App-Tier"
             tag: "DB"
           - scope: "Environment"
-            tag: "Prod"
+            tag: "Demo"
           - scope: "OS-Type"
             tag: "Linux"

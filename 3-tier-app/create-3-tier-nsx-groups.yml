@@ -103,7 +103,7 @@
             key: "Tag"
             operator: "EQUALS"
             resource_type: "Condition"
-    - name: create Production Group
+    - name: create Demo Group
       vmware.ansible_for_nsxt.nsxt_policy_group:
         hostname: "{{nsxt_hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
@@ -113,7 +113,7 @@
         domain_id: "default"
         expression:
           - member_type: "VirtualMachine"
-            value: "Environment|Prod"
+            value: "Environment|Demo"
             key: "Tag"
             operator: "EQUALS"
             resource_type: "Condition"

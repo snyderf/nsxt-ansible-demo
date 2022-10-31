@@ -18,7 +18,7 @@
           - scope: "App-Tier"
             tag: "Web"
           - scope: "Environment"
-            tag: "Prod"
+            tag: "Demo"
           - scope: "OS-Type"
             tag: "Linux"
     - name: tag fin-app-01
@@ -34,7 +34,7 @@
           - scope: "App-Tier"
             tag: "App"
           - scope: "Environment"
-            tag: "Prod"
+            tag: "Demo"
           - scope: "OS-Type"
             tag: "Linux"
     - name: tag fin-db-01
@@ -50,6 +50,6 @@
           - scope: "App-Tier"
             tag: "DB"
           - scope: "Environment"
-            tag: "Prod"
+            tag: "Demo"
           - scope: "OS-Type"
             tag: "Linux"
