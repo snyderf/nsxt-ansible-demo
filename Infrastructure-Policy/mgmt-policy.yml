@@ -28,7 +28,7 @@
         locked: True
         category: "Infrastructure"
         rules:
-          - action "ALLOW"
+          - action: "ALLOW"
             description: "SSH to Linux VMs"
             sequence_number: 10
             display_name: "SSH MGMT Access"
@@ -39,7 +39,7 @@
             ip_protocol: IPV4
             scope: 
               - "/infra/domains/default/groups/Linux-VMs"
-          - action "REJECT"
+          - action: "REJECT"
             description: "SSH to Linux VMs"
             sequence_number: 10
             display_name: "Block SSH General Access"
