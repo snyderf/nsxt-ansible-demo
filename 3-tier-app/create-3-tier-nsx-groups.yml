@@ -91,6 +91,7 @@
             operator: "EQUALS"
             resource_type: "Condition"
           - conjunction_operator: "OR"
+            resource_type: "ConjunctionOperator"
           - member_type: "SegmentPort"
             value: "OS-Type|Linux"
             key: "Tag"
