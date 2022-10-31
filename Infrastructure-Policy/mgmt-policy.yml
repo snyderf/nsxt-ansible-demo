@@ -1,0 +1,52 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  become: yes
+  gather_facts: False
+  vars_files:
+    - environment.yml
+  tasks:
+    - name: create MGMT Networks Group
+      vmware.ansible_for_nsxt.nsxt_policy_group:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: MGMT-Nets
+        state: "present"
+        domain_id: "default"
+        expression:
+          - resource_type: "IPAddressExpression"
+            ip_addresses: ["172.29.151.0/24"]
+    - name: Create MGMT Security Policy
+      vmware.ansible_for_nsxt.nsxt_policy_security_policy:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: "Infra Rules"
+        state: "present"
+        domain_id: "default"
+        locked: True
+        category: "Infrastructure"
+        rules:
+          - action "ALLOW"
+            description: "SSH to Linux VMs"
+            sequence_number: 10
+            display_name: "SSH MGMT Access"
+            source_groups: ["/infra/domains/default/groups/MGMT-Nets"]
+            destination_groups: ["/infra/domains/default/groups/Linux-VMs"]
+            services: ["/infra/services/SSH"]
+            notes: "Allow SSH from Management Network"
+            ip_protocol: IPV4
+            scope: 
+              - "/infra/domains/default/groups/Linux-VMs"
+          - action "REJECT"
+            description: "SSH to Linux VMs"
+            sequence_number: 10
+            display_name: "Block SSH General Access"
+            source_groups: ["ANY"]
+            destination_groups: ["/infra/domains/default/groups/Linux-VMs"]
+            services: ["/infra/services/SSH"]
+            notes: "Reject SSH from Other Networks"
+            ip_protocol: IPV4
+            scope: 
+              - "/infra/domains/default/groups/Linux-VMs"

@@ -10,14 +10,21 @@
         hostname: "{{hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
         validate_certs: False
-        display_name: "Infrastructure"
+        display_name: "Infra-Access"
         state: "present"
         domain_id: "default"
         locked: True
+        category: "Infrastructure"
         rules:
           - action "ALLOW"
             description: "Web Tier Access"
             sequence_number: 10
+            id: "Web_Tier_Access"
             display_name: "Web Tier Access"
-            source
-
+            source_groups: ["ANY"]
+            destination_groups: ["/infra/domains/default/groups/Web-Tier-VMs"]
+            services: ["/infra/services/HTTPS"]
+            notes: "Allow HTTPS Only to Web Tier"
+            ip_protocol: IPV4
+            scope: 
+              - "/infra/domains/default/groups/Web-Tier-VMs"
