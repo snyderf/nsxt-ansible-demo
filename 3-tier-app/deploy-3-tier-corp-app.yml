@@ -1,6 +1,7 @@
 ---
 - hosts: 127.0.0.1
   connection: local
+  ansible_python_interpreter: "/usr/bin/python3"
   become: yes
   gather_facts: False
   vars_files:
