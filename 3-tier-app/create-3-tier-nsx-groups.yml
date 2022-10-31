@@ -90,6 +90,12 @@
             key: "Tag"
             operator: "EQUALS"
             resource_type: "Condition"
+          - conjunction_operator: "OR"
+          - member_type: "SegmentPort"
+            value: "OS-Type|Linux"
+            key: "Tag"
+            operator: "EQUALS"
+            resource_type: "Condition"
     - name: create Linux VM Group
       vmware.ansible_for_nsxt.nsxt_policy_group:
         hostname: "{{nsxt_hostname}}"
