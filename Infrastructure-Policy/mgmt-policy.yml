@@ -22,7 +22,7 @@
         hostname: "{{nsxt_hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
         validate_certs: False
-        display_name: "Infra Rules"
+        display_name: "Infra-Rules"
         state: "present"
         domain_id: "default"
         locked: True
@@ -31,7 +31,7 @@
           - action: "ALLOW"
             description: "SSH to Linux VMs"
             sequence_number: 10
-            display_name: "SSH MGMT Access"
+            display_name: "SSH-MGMT-Access"
             source_groups: ["/infra/domains/default/groups/MGMT-Nets"]
             destination_groups: ["/infra/domains/default/groups/Linux-VMs"]
             services: ["/infra/services/SSH"]
@@ -42,7 +42,7 @@
           - action: "REJECT"
             description: "SSH to Linux VMs"
             sequence_number: 10
-            display_name: "Block SSH General Access"
+            display_name: "Block-SSH-General-Access"
             source_groups: ["ANY"]
             destination_groups: ["/infra/domains/default/groups/Linux-VMs"]
             services: ["/infra/services/SSH"]
