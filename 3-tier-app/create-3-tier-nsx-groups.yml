@@ -53,7 +53,7 @@
         hostname: "{{nsxt_hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
         validate_certs: False
-        display_name: DB-Tier-VMs
+        display_name: Corp-App-VMs
         state: "present"
         domain_id: "default"
         expression:
@@ -67,7 +67,7 @@
         hostname: "{{nsxt_hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
         validate_certs: False
-        display_name: DB-Tier-VMs
+        display_name: Fin-App-VMs
         state: "present"
         domain_id: "default"
         expression:
@@ -81,7 +81,7 @@
         hostname: "{{nsxt_hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
         validate_certs: False
-        display_name: DB-Tier-VMs
+        display_name: HR-App-VMs
         state: "present"
         domain_id: "default"
         expression:
@@ -95,7 +95,7 @@
         hostname: "{{nsxt_hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
         validate_certs: False
-        display_name: DB-Tier-VMs
+        display_name: Linux-VMs
         state: "present"
         domain_id: "default"
         expression:
@@ -109,7 +109,7 @@
         hostname: "{{nsxt_hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
         validate_certs: False
-        display_name: DB-Tier-VMs
+        display_name: Demo-Environment-VMs
         state: "present"
         domain_id: "default"
         expression:
