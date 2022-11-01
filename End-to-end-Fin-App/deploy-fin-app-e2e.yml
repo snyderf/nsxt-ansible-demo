@@ -15,7 +15,6 @@
         cluster: '{{vc_cluster }}'
         datastore: '{{vc_datastore }}'
         name: fin-web-01
-        networks:
         power_on: yes
         ovf: '{{ ova_path }}3-tier-ovas/fin-web-01.ovf'
         validate_certs: no
@@ -42,7 +41,6 @@
         cluster: '{{vc_cluster }}'
         datastore: '{{vc_datastore }}'
         name: fin-app-01
-        networks:
         power_on: yes
         ovf: '{{ ova_path }}3-tier-ovas/fin-app-01.ovf'
         validate_certs: no
@@ -56,7 +54,6 @@
         cluster: '{{vc_cluster }}'
         datastore: '{{vc_datastore }}'
         name: fin-db-01
-        networks:
         power_on: yes
         ovf: '{{ ova_path }}3-tier-ovas/fin-db-01.ovf'
         validate_certs: no
@@ -139,3 +136,27 @@
             key: "Tag"
             operator: "EQUALS"
             resource_type: "Condition"
+    - name: create Fin App Isolation Policy
+      vmware.ansible_for_nsxt.nsxt_policy_security_policy:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: "Infra-Rules"
+        state: "present"
+        domain_id: "default"
+        locked: True
+        category: "Environment"
+        rules:
+        - action: "DROP"
+          description: "Isolate the Fin App"
+          sequence_number: 100
+          display_name: "Fin-App-Isolation"
+          destinations_excluded: true
+          direction: "IN_OUT"
+          source_groups: ["/infra/domains/default/groups/Fin-App-VMs"]
+          destination_groups: ["/infra/domains/default/groups/Fin-App-VMs"]
+          services: ["/infra/services/SSH"]
+          notes: "Isolate the financial application so it does not talk to other apps"
+          ip_protocol: IPV4
+          scope: 
+            - "/infra/domains/default/groups/Fin-App-VMs"

@@ -1,0 +1,120 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  become: yes
+  gather_facts: False
+  vars_files:
+    - environment.yml
+  tasks:
+    - name: Delete Fin App Isolation Policy
+      vmware.ansible_for_nsxt.nsxt_policy_security_policy:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: "Fin-app-isolation"
+        state: "absent"
+        domain_id: "default"
+    - name: untag fin-web-01
+      vmware.ansible_for_nsxt.nsxt_vm_tags:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        virtual_machine_display_name: fin-web-01
+        remove_other_tags: False
+        remove_tags_with_scope:
+          - scope: "App-Name"
+          - scope: "App-Tier"
+          - scope: "Environment"
+          - scope: "OS-Type"
+    - name: untag fin-web-02
+      vmware.ansible_for_nsxt.nsxt_vm_tags:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        virtual_machine_display_name: fin-web-02
+        remove_other_tags: False
+        remove_tags_with_scope:
+          - scope: "App-Name"
+          - scope: "App-Tier"
+          - scope: "Environment"
+          - scope: "OS-Type"
+    - name: untag fin-app-01
+      vmware.ansible_for_nsxt.nsxt_vm_tags:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        virtual_machine_display_name: fin-app-01
+        remove_other_tags: False
+        remove_tags_with_scope:
+          - scope: "App-Name"
+          - scope: "App-Tier"
+          - scope: "Environment"
+          - scope: "OS-Type"
+    - name: untag fin-db-01
+      vmware.ansible_for_nsxt.nsxt_vm_tags:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        virtual_machine_display_name: fin-db-01
+        remove_other_tags: False
+        remove_tags_with_scope:
+          - scope: "App-Name"
+          - scope: "App-Tier"
+          - scope: "Environment"
+          - scope: "OS-Type"
+    - name: create Fin App Group
+      vmware.ansible_for_nsxt.nsxt_policy_group:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: Fin-App-VMs
+        state: "present"
+        domain_id: "default"
+        expression:
+          - member_type: "VirtualMachine"
+            value: "App-Name|Fin-App"
+            key: "Tag"
+            operator: "EQUALS"
+            resource_type: "Condition"
+    - name: delete fin-web-01
+      community.vmware.vmware_guest:
+        hostname: '{{ vc_hostname }}'
+        username: '{{ vc_username }}'
+        password: '{{ vc_password }}'
+        name: fin-web-01
+        delete_from_inventory: True
+        state: absent
+        validate_certs: no
+      delegate_to: localhost
+    - name: delete fin-web-02
+      community.vmware.vmware_guest:
+        hostname: '{{ vc_hostname }}'
+        username: '{{ vc_username }}'
+        password: '{{ vc_password }}'
+        name: fin-web-02
+        delete_from_inventory: True
+        state: absent
+        validate_certs: no
+      delegate_to: localhost
+    - name: delete fin-app-01
+      community.vmware.vmware_guest:
+        hostname: '{{ vc_hostname }}'
+        username: '{{ vc_username }}'
+        password: '{{ vc_password }}'
+        name: fin-app-01
+        delete_from_inventory: True
+        state: absent
+        validate_certs: no
+      delegate_to: localhost
+    - name: delete corp-db-01
+      community.vmware.vmware_guest:
+        hostname: '{{ vc_hostname }}'
+        username: '{{ vc_username }}'
+        password: '{{ vc_password }}'
+        name: fin-db-01
+        delete_from_inventory: True
+        state: absent
+        validate_certs: no
+      delegate_to: localhost
+    
+    

@@ -1,0 +1,68 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars_files:
+    - environment.yml
+  tasks:
+    - name: create Corp App Isolation Policy
+      vmware.ansible_for_nsxt.nsxt_policy_security_policy:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: "Application-Isolation"
+        state: "present"
+        domain_id: "default"
+        locked: True
+        category: "Application"
+        sequence_number: 100
+        rules:
+        - action: "DROP"
+          description: "Isolate the Corp App"
+          sequence_number: 100
+          display_name: "Corp-App-Isolation"
+          destinations_excluded: true
+          direction: "IN_OUT"
+          source_groups: ["/infra/domains/default/groups/Corp-App-VMs"]
+          destination_groups: ["/infra/domains/default/groups/Corp-App-VMs"]
+          services: ["/infra/services/SSH"]
+          notes: "Isolate the corporate application so it does not talk to other apps"
+          ip_protocol: IPV4
+          scope: 
+            - "/infra/domains/default/groups/Corp-App-VMs"
+    - name: Set 3 Tier App Segmentation Policy 
+      vmware.ansible_for_nsxt.nsxt_policy_security_policy:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: "3-Tier-App-Policy"
+        state: "present"
+        domain_id: "default"
+        locked: True
+        category: "Application"
+        sequence_number: 1000
+        rules:
+        - action: "ALLOW"
+          description: "Allow Port 8080 Only To App Tier"
+          sequence_number: 10
+          display_name: "Web-to-App-Tier"
+          source_groups: ["/infra/domains/default/groups/Web-Tier-VMs"]
+          destination_groups: ["/infra/domains/default/groups/App-Tier-VMs"]
+          services: ["/infra/services/Oracle_XMLDB_HTTP_port"]
+          notes: "Restrict Access to the App tier so that only Web Tier can access over port 8080"
+          ip_protocol: IPV4
+          scope: 
+            - "/infra/domains/default/groups/Demo-Environment-VMs"
+        - action: "ALLOW"
+          description: "Allow Port 3306 Only To DB Tier"
+          sequence_number: 20
+          display_name: "App-to-DB-Tier"
+          source_groups: ["/infra/domains/default/groups/App-Tier-VMs"]
+          destination_groups: ["/infra/domains/default/groups/DB-Tier-VMs"]
+          services: ["/infra/services/MySQL"]
+          notes: "Restrict Access to DB tier so only App tier can access over port 3306"
+          ip_protocol: IPV4
+          scope: 
+            - "/infra/domains/default/groups/Demo-Environment-VMs"
+      
+    
