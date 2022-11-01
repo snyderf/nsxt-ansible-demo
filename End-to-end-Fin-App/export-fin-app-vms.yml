@@ -15,7 +15,7 @@
         name: "fin-web-01"
         state: shutdown-guest
       delegate_to: localhost
-    -name: Pause for 25 Seconds
+    - name: Pause for 25 Seconds
       ansible.builtin.pause:
         seconds: 25
     - name: dowload fin-web-01
@@ -44,7 +44,7 @@
         validate_certs: no
         name: "fin-web-02"
         state: shutdown-guest
-    -name: Pause for 25 Seconds
+    - name: Pause for 25 Seconds
       ansible.builtin.pause:
         seconds: 25
     - name: dowload fin-web-02
@@ -74,7 +74,7 @@
         name: "fin-app-01"
         state: shutdown-guest
       delegate_to: localhost
-    -name: Pause for 25 Seconds
+    - name: Pause for 25 Seconds
       ansible.builtin.pause:
         seconds: 25
     - name: dowload fin-app-01
@@ -104,7 +104,7 @@
         name: "fin-db-01"
         state: shutdown-guest
       delegate_to: localhost
-    -name: Pause for 25 Seconds
+    - name: Pause for 25 Seconds
       ansible.builtin.pause:
         seconds: 25
     - name: dowload fin-db-01
