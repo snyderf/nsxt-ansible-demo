@@ -5,7 +5,7 @@
   vars_files:
     - environment.yml
   tasks:
-    - name: create Corp App Isolation Policy
+    - name: Create Corp App Isolation Policy
       vmware.ansible_for_nsxt.nsxt_policy_security_policy:
         hostname: "{{nsxt_hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
@@ -30,6 +30,7 @@
           ip_protocol: IPV4
           scope: 
             - "/infra/domains/default/groups/Corp-App-VMs"
+        delegate_to: localhost
     - name: Set 3 Tier App Segmentation Policy 
       vmware.ansible_for_nsxt.nsxt_policy_security_policy:
         hostname: "{{nsxt_hostname}}"
@@ -64,5 +65,6 @@
           ip_protocol: IPV4
           scope: 
             - "/infra/domains/default/groups/Demo-Environment-VMs"
+      delegate_to: localhost
       
     
