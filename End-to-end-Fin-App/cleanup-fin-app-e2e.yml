@@ -19,19 +19,15 @@
         sequence_number: 100
         rules:
         - action: "DROP"
+          state: "absent"
           description: "Isolate the Fin App"
-          sequence_number: 102
           display_name: "Fin-App-Isolation"
           destinations_excluded: true
-          direction: "IN_OUT"
           source_groups: ["/infra/domains/default/groups/Fin-App-VMs"]
           destination_groups: ["/infra/domains/default/groups/Fin-App-VMs"]
           services: ["/infra/services/SSH"]
-          notes: "Isolate the financial application so it does not talk to other apps"
-          ip_protocol: IPV4
           scope: 
-            - "/infra/domains/default/groups/Fin-App-VMs"
-          state: "absent"
+            - "/infra/domains/default/groups/Fin-App-VMs" 
     - name: untag fin-web-01
       vmware.ansible_for_nsxt.nsxt_vm_tags:
         hostname: "{{nsxt_hostname}}"
