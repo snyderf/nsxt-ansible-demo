@@ -18,7 +18,8 @@
         category: "Application"
         sequence_number: 100
         rules:
-        - description: "Isolate the Fin App"
+        - action: "DROP"
+          description: "Isolate the Fin App"
           sequence_number: 102
           display_name: "Fin-App-Isolation"
           destinations_excluded: true
