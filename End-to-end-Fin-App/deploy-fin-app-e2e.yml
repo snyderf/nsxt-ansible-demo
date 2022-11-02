@@ -157,7 +157,7 @@
         rules:
         - action: "DROP"
           description: "Isolate the Fin App"
-          sequence_number: 100
+          sequence_number: 102
           display_name: "Fin-App-Isolation"
           destinations_excluded: true
           direction: "IN_OUT"
