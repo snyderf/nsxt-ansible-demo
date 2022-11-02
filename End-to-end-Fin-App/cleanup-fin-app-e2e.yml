@@ -85,16 +85,15 @@
         name: "fin-web-01"
         state: shutdown-guest
       delegate_to: localhost
-    - name: Pause for 25 Seconds
+    - name: Pause for 12 Seconds
       ansible.builtin.pause:
-        seconds: 25
+        seconds: 12
     - name: delete fin-web-01
       community.vmware.vmware_guest:
         hostname: '{{ vc_hostname }}'
         username: '{{ vc_username }}'
         password: '{{ vc_password }}'
         name: fin-web-01
-        delete_from_inventory: True
         state: absent
         validate_certs: no
       delegate_to: localhost
@@ -107,16 +106,15 @@
         name: "fin-web-02"
         state: shutdown-guest
       delegate_to: localhost
-    - name: Pause for 25 Seconds
+    - name: Pause for 12 Seconds
       ansible.builtin.pause:
-        seconds: 25
+        seconds: 12
     - name: delete fin-web-02
       community.vmware.vmware_guest:
         hostname: '{{ vc_hostname }}'
         username: '{{ vc_username }}'
         password: '{{ vc_password }}'
         name: fin-web-02
-        delete_from_inventory: True
         state: absent
         validate_certs: no
       delegate_to: localhost
@@ -129,16 +127,15 @@
         name: "fin-app-01"
         state: shutdown-guest
       delegate_to: localhost
-    - name: Pause for 25 Seconds
+    - name: Pause for 12 Seconds
       ansible.builtin.pause:
-        seconds: 25
+        seconds: 12
     - name: delete fin-app-01
       community.vmware.vmware_guest:
         hostname: '{{ vc_hostname }}'
         username: '{{ vc_username }}'
         password: '{{ vc_password }}'
         name: fin-app-01
-        delete_from_inventory: True
         state: absent
         validate_certs: no
       delegate_to: localhost
@@ -151,16 +148,15 @@
         name: "fin-db-01"
         state: shutdown-guest
       delegate_to: localhost
-    - name: Pause for 25 Seconds
+    - name: Pause for 12 Seconds
       ansible.builtin.pause:
-        seconds: 25
+        seconds: 12
     - name: delete fin-db-01
       community.vmware.vmware_guest:
         hostname: '{{ vc_hostname }}'
         username: '{{ vc_username }}'
         password: '{{ vc_password }}'
         name: fin-db-01
-        delete_from_inventory: True
         state: absent
         validate_certs: no
       delegate_to: localhost
