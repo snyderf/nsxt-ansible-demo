@@ -149,11 +149,11 @@
         hostname: "{{nsxt_hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
         validate_certs: False
-        display_name: "Infra-Rules"
+        display_name: "Application-Isolation"
         state: "present"
         domain_id: "default"
         locked: True
-        category: "Environment"
+        category: "Application"
         rules:
         - action: "DROP"
           description: "Isolate the Fin App"
