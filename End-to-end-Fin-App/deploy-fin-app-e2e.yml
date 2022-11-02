@@ -16,7 +16,7 @@
         datastore: '{{vc_datastore }}'
         name: fin-web-01
         power_on: yes
-        ovf: '{{ ova_path }}3-tier-ovas/fin-web-01.ovf'
+        ovf: '{{ ova_path }}3-tier-ovas/fin-web-01/fin-web-01.ovf'
         validate_certs: no
       delegate_to: localhost
     - name: deploy fin-web-02
@@ -29,7 +29,7 @@
         datastore: '{{vc_datastore }}'
         name: fin-web-02
         power_on: yes
-        ovf: '{{ ova_path }}3-tier-ovas/fin-web-02.ovf'
+        ovf: '{{ ova_path }}3-tier-ovas/fin-web-02/fin-web-02.ovf'
         validate_certs: no
       delegate_to: localhost
     - name: deploy fin-app-01
@@ -42,7 +42,7 @@
         datastore: '{{vc_datastore }}'
         name: fin-app-01
         power_on: yes
-        ovf: '{{ ova_path }}3-tier-ovas/fin-app-01.ovf'
+        ovf: '{{ ova_path }}3-tier-ovas/fin-app-01/fin-app-01.ovf'
         validate_certs: no
       delegate_to: localhost
     - name: deploy corp-db-01
@@ -55,7 +55,7 @@
         datastore: '{{vc_datastore }}'
         name: fin-db-01
         power_on: yes
-        ovf: '{{ ova_path }}3-tier-ovas/fin-db-01.ovf'
+        ovf: '{{ ova_path }}3-tier-ovas/fin-db-01/fin-db-01.ovf'
         validate_certs: no
       delegate_to: localhost
     - name: tag fin-web-01
