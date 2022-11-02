@@ -1,0 +1,33 @@
+
+    ---
+- hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars_files:
+    - environment.yml
+  tasks:
+    - name: create Corp App Isolation Policy
+      vmware.ansible_for_nsxt.nsxt_policy_security_policy:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: "Application-Isolation"
+        state: "present"
+        domain_id: "default"
+        locked: True
+        category: "Application"
+        sequence_number: 10000
+        rules:
+        - action: "DROP"
+          description: "Isolate the Corp App"
+          sequence_number: 1
+          display_name: "Corp-App-Isolation"
+          destinations_excluded: true
+          direction: "IN_OUT"
+          source_groups: ["ANY"]
+          destination_groups: ["ANY"]
+          services: ["ANY"]
+          notes: "Isolate the corporate application so it does not talk to other apps"
+          ip_protocol: IPV4
+          scope: 
+            - "/infra/domains/default/groups/Demo-Environment-VMs"
