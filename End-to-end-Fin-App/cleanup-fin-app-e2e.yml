@@ -12,22 +12,10 @@
         nsx_cert_path: "{{nsx_cert_path}}"
         validate_certs: False
         display_name: "Application-Isolation"
-        state: "present"
+        state: "absent"
         domain_id: "default"
         locked: True
         category: "Application"
-        sequence_number: 100
-        rules:
-        - action: "DROP"
-          state: "absent"
-          description: "Isolate the Fin App"
-          display_name: "Fin-App-Isolation"
-          destinations_excluded: true
-          source_groups: ["/infra/domains/default/groups/Fin-App-VMs"]
-          destination_groups: ["/infra/domains/default/groups/Fin-App-VMs"]
-          services: ["/infra/services/SSH"]
-          scope: 
-            - "/infra/domains/default/groups/Fin-App-VMs" 
     - name: untag fin-web-01
       vmware.ansible_for_nsxt.nsxt_vm_tags:
         hostname: "{{nsxt_hostname}}"
