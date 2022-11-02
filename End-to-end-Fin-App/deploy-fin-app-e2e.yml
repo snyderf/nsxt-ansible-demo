@@ -16,7 +16,7 @@
         datastore: '{{vc_datastore }}'
         name: fin-web-01
         networks:
-          - 'Overlay-Web-160': 'Overlay-Web-160'
+          'Overlay-Web-160': 'Overlay-Web-160'
         power_on: yes
         ovf: '{{ ova_path }}3-tier-ovas/fin-web-01/fin-web-01.ovf'
         validate_certs: no
@@ -31,7 +31,7 @@
         datastore: '{{vc_datastore }}'
         name: fin-web-02
         networks:
-          - 'Overlay-Web-160': 'Overlay-Web-160'
+          'Overlay-Web-160': 'Overlay-Web-160'
         power_on: yes
         ovf: '{{ ova_path }}3-tier-ovas/fin-web-02/fin-web-02.ovf'
         validate_certs: no
@@ -46,7 +46,7 @@
         datastore: '{{vc_datastore }}'
         name: fin-app-01
         networks:
-          - 'Overlay-App-144': 'Overlay-App-144'
+          'Overlay-App-144': 'Overlay-App-144'
         power_on: yes
         ovf: '{{ ova_path }}3-tier-ovas/fin-app-01/fin-app-01.ovf'
         validate_certs: no
@@ -61,7 +61,7 @@
         datastore: '{{vc_datastore }}'
         name: fin-db-01
         networks:
-          - 'Overlay-DB-128': 'Overlay-DB-128'
+          'Overlay-DB-128': 'Overlay-DB-128'
         power_on: yes
         ovf: '{{ ova_path }}3-tier-ovas/fin-db-01/fin-db-01.ovf'
         validate_certs: no
