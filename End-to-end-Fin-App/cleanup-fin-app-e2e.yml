@@ -11,9 +11,6 @@
         hostname: "{{nsxt_hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
         validate_certs: False
-        hostname: "{{nsxt_hostname}}"
-        nsx_cert_path: "{{nsx_cert_path}}"
-        validate_certs: False
         display_name: "Application-Isolation"
         state: "present"
         domain_id: "default"
@@ -21,7 +18,7 @@
         category: "Application"
         sequence_number: 100
         rules:
-          display_name: "Fin-app-isolation"
+        - display_name: "Fin-app-isolation"
           state: "absent"
           domain_id: "default"
     - name: untag fin-web-01
