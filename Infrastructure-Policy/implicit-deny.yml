@@ -1,4 +1,3 @@
-
 ---
 - hosts: 127.0.0.1
   connection: local
@@ -22,7 +21,6 @@
           description: "Deny all traffic for the Demo Environment"
           sequence_number: 1
           display_name: "Default-Rule"
-          destinations_excluded: true
           direction: "IN_OUT"
           source_groups: ["ANY"]
           destination_groups: ["ANY"]
