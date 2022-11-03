@@ -48,7 +48,7 @@
           display_name: "Web-to-App-Tier"
           source_groups: ["/infra/domains/default/groups/Web-Tier-VMs"]
           destination_groups: ["/infra/domains/default/groups/App-Tier-VMs"]
-          services: ["/infra/services/Oracle_XMLDB_HTTP_port"]
+          services: ["/infra/services/Oracle_XMLDB_HTTP_port", "/infra/services/Lab-Secure"]
           notes: "Restrict Access to the App tier so that only Web Tier can access over port 8080"
           ip_protocol: IPV4
           scope: 
