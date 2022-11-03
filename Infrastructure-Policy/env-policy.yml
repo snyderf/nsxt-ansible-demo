@@ -40,16 +40,3 @@
           ip_protocol: IPV4
           scope: 
             - "/infra/domains/default/groups/Demo-Environment-VMs"
-        - action: "DROP"
-          description: "Block Communication from this environment to other environments."
-          sequence_number: 1001
-          display_name: "Isolate-Demo-Env"
-          sources_excluded: true
-          direction: "IN_OUT"
-          source_groups: ["/infra/domains/default/groups/Demo-Environment-VMs"]
-          destination_groups: ["/infra/domains/default/groups/Demo-Environment-VMs"]
-          services: ["/infra/services/SSH"]
-          notes: "Allow SSH from Management Network"
-          ip_protocol: IPV4
-          scope: 
-            - "/infra/domains/default/groups/Demo-Environment-VMs"
