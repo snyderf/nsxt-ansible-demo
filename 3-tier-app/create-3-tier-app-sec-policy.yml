@@ -59,7 +59,7 @@
           display_name: "App-to-DB-Tier"
           source_groups: ["/infra/domains/default/groups/App-Tier-VMs"]
           destination_groups: ["/infra/domains/default/groups/DB-Tier-VMs"]
-          services: ["/infra/services/MySQL"]
+          services: ["/infra/services/MySQL", "/infra/services/HTTP"]
           notes: "Restrict Access to DB tier so only App tier can access over port 3306"
           ip_protocol: IPV4
           scope: 
