@@ -20,7 +20,7 @@
           description: "Allow HTTPS to access VMs in the Web Tier Group"
           sequence_number: 10
           display_name: "HTTPS-to-Web-Tier"
-          source_groups: ["/infra/domains/default/groups/MGMT-Nets"]
+          source_groups: ["/infra/domains/default/groups/MGMT-Nets", "/infra/domains/default/groups/Jump-Hosts"]
           destination_groups: ["/infra/domains/default/groups/Web-Tier-VMs"]
           services: ["/infra/services/SSH"]
           notes: "Allow SSH from Management Network"
