@@ -11,7 +11,7 @@
         hostname: "{{nsxt_hostname}}"
         nsx_cert_path: "{{nsx_cert_path}}"
         validate_certs: False
-        display_name: "Application-Isolation"
+        display_name: "Fin-Application-Isolation"
         state: "absent"
         domain_id: "default"
         locked: True
