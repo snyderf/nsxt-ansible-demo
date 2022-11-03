@@ -1,0 +1,32 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars_files:
+    - environment.yml
+  tasks:
+    - name: Create HR App Isolation Policy
+      vmware.ansible_for_nsxt.nsxt_policy_security_policy:
+        hostname: "{{nsxt_hostname}}"
+        nsx_cert_path: "{{nsx_cert_path}}"
+        validate_certs: False
+        display_name: "HR-Application-Isolation"
+        state: "present"
+        domain_id: "default"
+        locked: True
+        category: "Application"
+        sequence_number: 101
+        rules:
+        - action: "DROP"
+          description: "Isolate the HR App"
+          sequence_number: 100
+          display_name: "HR-App-Isolation"
+          destinations_excluded: true
+          direction: "IN_OUT"
+          source_groups: ["/infra/domains/default/groups/HR-App-VMs"]
+          destination_groups: ["/infra/domains/default/groups/HR-App-VMs"]
+          services: ["/infra/services/SSH"]
+          notes: "Isolate the HR application so it does not talk to other apps"
+          ip_protocol: IPV4
+          scope: 
+            - "/infra/domains/default/groups/HR-App-VMs"
