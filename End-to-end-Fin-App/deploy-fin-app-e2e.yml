@@ -164,7 +164,7 @@
           direction: "IN_OUT"
           source_groups: ["/infra/domains/default/groups/Fin-App-VMs"]
           destination_groups: ["/infra/domains/default/groups/Fin-App-VMs"]
-          services: ["/infra/services/SSH"]
+          services: ["ANY"]
           notes: "Isolate the financial application so it does not talk to other apps"
           ip_protocol: IPV4
           scope: 

@@ -25,7 +25,7 @@
           direction: "IN_OUT"
           source_groups: ["/infra/domains/default/groups/Corp-App-VMs"]
           destination_groups: ["/infra/domains/default/groups/Corp-App-VMs"]
-          services: ["/infra/services/SSH"]
+          services: ["ANY"]
           notes: "Isolate the corporate application so it does not talk to other apps"
           ip_protocol: IPV4
           scope: 
